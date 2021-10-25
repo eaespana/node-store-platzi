@@ -7,14 +7,11 @@ const {createProductSchema,updateProductSchema,getProductSchema} = require('./..
 const router = express.Router();
 const service = new ProductsService();
 
-router.get('/', async (req,res) =>{
-  const products = await service.find();
-  res.json(products);
+router.get('/',
+  async (req,res) =>{
+    const products = await service.find();
+    res.json(products);
 });
-
-router.get('/filter', (req,res) => {
-  res.send('Soy un filter');
-})
 
 router.get('/:id',
   validateHandler(getProductSchema,'params'),
@@ -75,7 +72,5 @@ router.delete('/:id', async (req,res) => {
     id: product
   });
 });
-
-
 
 module.exports = router;

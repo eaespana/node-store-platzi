@@ -12,8 +12,9 @@ class CategoriesService {
     const limit = 100;
     for (let index = 0; index < limit; index++) {
         this.categories.push({
-        id: faker.datatype.uuid(),
-        name: faker.commerce.productName()
+        idCategoria: faker.datatype.uuid(),
+        idProducto: faker.datatype.uuid(),
+        nameCategoria: faker.commerce.productAdjective()
       });
     }
   }
@@ -26,8 +27,8 @@ class CategoriesService {
     return this.categories;
   }
 
-  findOne(id) {
-    return this.categories.find(item => item.id === id);
+  findOne(idCategoria) {
+    return this.categories.find(item => item.idCategoria === idCategoria);
   }
 
   update(){
